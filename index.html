@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hallow Type - WPM Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Gaegu', cursive;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .confetti-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 9999;
+      }
+
+      .confetti-piece {
+        position: absolute;
+        width: 8px;
+        height: 16px;
+        top: -20px;
+        opacity: 0;
+        animation: fall 5s linear infinite;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(0vh) rotateZ(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(105vh) rotateZ(720deg);
+          opacity: 0;
+        }
+      }
+
+      /* Custom styles for typing test improvements */
+      @keyframes smooth-blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      .caret-blink {
+        animation: smooth-blink 1s ease-in-out infinite;
+      }
+
+      /* 🎃 Halloween Animations */
+      @keyframes ghost-float {
+        0%, 100% { transform: translateY(0) rotate(-5deg); }
+        50% { transform: translateY(-8px) rotate(5deg); }
+      }
+      @keyframes bat-fly {
+        0%, 100% { transform: translateX(0) scaleX(1); }
+        25% { transform: translateX(3px) scaleX(0.9); }
+        50% { transform: translateX(0) scaleX(1); }
+        75% { transform: translateX(-3px) scaleX(0.9); }
+      }
+      @keyframes pumpkin-glow {
+        0%, 100% { filter: drop-shadow(0 0 2px #f97316); }
+        50% { filter: drop-shadow(0 0 8px #f97316); }
+      }
+      @keyframes spider-dangle {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        25% { transform: translateY(2px) rotate(3deg); }
+        75% { transform: translateY(-2px) rotate(-3deg); }
+      }
+      @keyframes spooky-pulse {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.1); }
+      }
+      .animate-ghost-float {
+        animation: ghost-float 2s ease-in-out infinite;
+      }
+      .animate-bat-fly {
+        animation: bat-fly 0.8s ease-in-out infinite;
+      }
+      .animate-pumpkin-glow {
+        animation: pumpkin-glow 1.5s ease-in-out infinite;
+      }
+      .animate-spider-dangle {
+        animation: spider-dangle 2s ease-in-out infinite;
+      }
+      .animate-spooky-pulse {
+        animation: spooky-pulse 2s ease-in-out infinite;
+      }
+
+      /* 🎃 Halloween Animated Circle Ring */
+      @keyframes halloween-ring-spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes halloween-ring-pulse {
+        0%, 100% { opacity: 0.6; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.05); }
+      }
+      @keyframes halloween-dash {
+        0% { stroke-dashoffset: 0; }
+        100% { stroke-dashoffset: 100; }
+      }
+      @keyframes halloween-glow-rotate {
+        0% { filter: drop-shadow(0 0 4px #f97316) drop-shadow(2px 0 6px #a855f7); }
+        25% { filter: drop-shadow(0 2px 6px #f97316) drop-shadow(0 0 4px #a855f7); }
+        50% { filter: drop-shadow(-2px 0 6px #f97316) drop-shadow(0 2px 4px #a855f7); }
+        75% { filter: drop-shadow(0 -2px 4px #f97316) drop-shadow(-2px 0 6px #a855f7); }
+        100% { filter: drop-shadow(0 0 4px #f97316) drop-shadow(2px 0 6px #a855f7); }
+      }
+      .animate-halloween-ring-spin {
+        animation: halloween-ring-spin 8s linear infinite;
+      }
+      .animate-halloween-ring-pulse {
+        animation: halloween-ring-pulse 2s ease-in-out infinite;
+      }
+      .animate-halloween-dash {
+        animation: halloween-dash 3s linear infinite;
+      }
+      .animate-halloween-glow {
+        animation: halloween-glow-rotate 3s ease-in-out infinite;
+      }
+
+      /* Serene Theme (monkeytype inspired) */
+      html.serene.dark {
+        color-scheme: dark;
+      }
+      html.serene.dark body,
+      html.serene.dark .bg-[#FEF7DC], html.serene.dark .dark\:bg-gray-800 {
+        background-color: #323437;
+        color: #646669;
+      }
+      html.serene.dark .bg-[#FFF8E1], html.serene.dark .dark\:bg-gray-700,
+      html.serene.dark .bg-white, html.serene.dark .dark\:bg-gray-700 {
+        background-color: transparent;
+        border-color: transparent;
+      }
+      html.serene.dark .border-[#8D6E63], html.serene.dark .dark\:border-gray-500, html.serene.dark .dark\:border-gray-600, html.serene.dark .dark\:border-amber-500 {
+        border-color: transparent;
+      }
+      html.serene.dark .dark\:text-gray-300 {
+        color: #646669; /* Make default text darker for contrast */
+      }
+      html.serene.dark .text-[#6D4C41],
+      html.serene.dark .dark\:text-gray-200 {
+        color: #d1d5db;
+      }
+      html.serene.dark h1, html.serene.dark .dark\:text-amber-200 {
+        color: #e2b714;
+        text-shadow: none;
+      }
+      html.serene.dark .text-[#4DB6AC], html.serene.dark .dark\:text-teal-400 {
+        color: #e2b714;
+      }
+      html.serene.dark .bg-[#FFCA28], html.serene.dark .dark\:bg-amber-400 {
+        background-color: #e2b714;
+        color: #323437;
+        border-color: #e2b714;
+      }
+      html.serene.dark .bg-[#FFCA28]:hover, html.serene.dark .dark\:bg-amber-400:hover,
+      html.serene.dark .hover\:bg-\[\#FFB300\]:hover, html.serene.dark .dark\:hover\:bg-amber-500:hover {
+        background-color: #f2c726;
+      }
+      html.serene.dark .bg-[#8D6E63], html.serene.dark .dark\:bg-amber-500 { /* Selected button */
+        background-color: #e2b714 !important;
+        color: #323437 !important;
+      }
+      html.serene.dark .hover\:bg-\[\#EFEBE9\]:hover, html.serene.dark .dark\:hover\:bg-gray-600:hover, html.serene.dark .hover\:bg-gray-100:hover {
+        background-color: #424447;
+      }
+      html.serene.dark .caret-blink {
+        background-color: #e2b714;
+      }
+      html.serene.dark .text-green-600, html.serene.dark .dark\:text-green-400 {
+        color: #ffffff;
+      }
+      html.serene.dark .text-red-500 {
+        color: #ca4754;
+      }
+      html.serene.dark .decoration-red-500 {
+        text-decoration-color: #ca4754;
+      }
+      html.serene.dark .bg-red-100, html.serene.dark .dark\:bg-red-900\/50 {
+        background-color: rgba(202, 71, 84, 0.2);
+      }
+      html.serene.dark .bg-black\/\[\.08\], html.serene.dark .dark\:bg-white\/\[\.08\] {
+        background-color: rgba(226, 183, 20, 0.15); /* A subtle yellow highlight */
+      }
+      html.serene.dark header button, html.serene.dark footer {
+        color: #646669;
+      }
+      html.serene.dark header button:hover {
+        color: #e2b714;
+        background-color: transparent;
+      }
+    </style>
+  <script>
+    // Prevent flash of wrong theme
+    let theme = localStorage.getItem('doodle-type-theme');
+    try {
+        if (theme) {
+            const parsed = JSON.parse(theme);
+            if (typeof parsed === 'string') theme = parsed;
+        }
+    } catch(e) {
+        // Theme was likely a raw string or invalid JSON, rely on raw value
+    }
+    
+    document.documentElement.classList.remove('dark', 'serene');
+
+    if (theme === 'light') {
+        // Light theme
+    } else if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+    } else {
+        // Default to serene (if 'serene' or null)
+        document.documentElement.classList.add('dark', 'serene');
+    }
+  </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "firebase/app": "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js",
+    "firebase/auth": "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js",
+    "firebase/firestore": "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js",
+    "firebase/": "https://aistudiocdn.com/firebase@^12.5.0/",
+    "vite": "https://aistudiocdn.com/vite@^7.2.2",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
+    "path": "https://aistudiocdn.com/path@^0.12.7"
+  }
+}
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EYFH09D7VD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EYFH09D7VD');
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-[#FEF7DC] dark:bg-gray-800">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
